@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="pt"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../../../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../../../jacoco-resources/report.gif" type="image/gif"/><title>TesteCamelCase.java</title><link rel="stylesheet" href="../../../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../../../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../../../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../../../index.html" class="el_report">TesteCamelCase (23 de jan. de 2022 19:35:54)</a> &gt; <a href="../../index.html" class="el_group">quebra-string-camelcase</a> &gt; <a href="../index.html" class="el_bundle">quebra-string-camelcase</a> &gt; <a href="index.source.html" class="el_package">default</a> &gt; <span class="el_source">TesteCamelCase.java</span></div><h1>TesteCamelCase.java</h1><pre class="source lang-java linenums">import static org.junit.Assert.*;
+
+import java.util.ArrayList;
+
+import org.junit.Before;
+import org.junit.Test;
+
+<span class="fc" id="L8">public class TesteCamelCase {</span>
+	ArrayList&lt;String&gt; palavras, palavras2, palavras3, palavras4;
+	
+	@Before
+	public void inicializaCamelCase(){
+<span class="fc" id="L13">		palavras = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L14">		palavras2 = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L15">		palavras3 = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L16">		palavras4 = new ArrayList&lt;&gt;();</span>
+		/*palavras.add(&quot;nome&quot;);
+		palavras.add(&quot;composto&quot;);*/
+<span class="fc" id="L19">		palavras.add(&quot;numero&quot;);</span>
+<span class="fc" id="L20">		palavras.add(&quot;CPF&quot;);</span>
+<span class="fc" id="L21">		palavras.add(&quot;contribuinte&quot;);</span>
+<span class="fc" id="L22">		palavras2.add(&quot;recupera&quot;);</span>
+<span class="fc" id="L23">		palavras2.add(&quot;10&quot;);</span>
+<span class="fc" id="L24">		palavras2.add(&quot;primeiros&quot;);</span>
+<span class="fc" id="L25">		palavras3.add(&quot;10&quot;);</span>
+<span class="fc" id="L26">		palavras3.add(&quot;primeiros&quot;);</span>
+<span class="fc" id="L27">		palavras4.add(&quot;nome&quot;);</span>
+<span class="fc" id="L28">		palavras4.add(&quot;#&quot;);</span>
+<span class="fc" id="L29">		palavras4.add(&quot;composto&quot;);</span>
+<span class="fc" id="L30">	}</span>
+	
+	@Test
+	public void testeConverterCamelCase(){
+		
+<span class="fc" id="L35">		assertArrayEquals(palavras.toArray(),CamelCase.converterCamelCase(&quot;numeroCPFContribuinte&quot;).toArray());</span>
+<span class="fc" id="L36">	}</span>
+	
+	@Test
+	public void testePalavraMinuscula(){
+<span class="fc" id="L40">		assertEquals(&quot;nome&quot;, CamelCase.palavraMinuscula(&quot;Nome&quot;));</span>
+<span class="fc" id="L41">	}</span>
+	
+	@Test
+	public void testeQuebraTexto(){
+<span class="fc" id="L45">		assertArrayEquals(palavras.toArray(), CamelCase.quebraTexto(&quot;numeroCPFContribuinte&quot;).toArray());</span>
+<span class="fc" id="L46">	}</span>
+	
+	@Test
+	public void testeTodosInicioMaiusculo(){
+<span class="fc" id="L50">		assertArrayEquals(palavras.toArray(), CamelCase.converterCamelCase(&quot;numeroCPFContribuinte&quot;).toArray());</span>
+<span class="fc" id="L51">	}</span>
+	
+	@Test
+	public void testeTudoMaiusculo(){
+<span class="fc" id="L55">		assertArrayEquals(palavras.toArray(), CamelCase.converterCamelCase(&quot;numeroCPFContribuinte&quot;).toArray());</span>
+<span class="fc" id="L56">	}</span>
+	
+	@Test
+	public void testeMaiusculaNoMeio(){
+<span class="fc" id="L60">		assertArrayEquals(palavras.toArray(), CamelCase.converterCamelCase(&quot;numeroCPFContribuinte&quot;).toArray());</span>
+<span class="fc" id="L61">	}</span>
+	
+	@Test
+	public void numeroMeio(){
+<span class="fc" id="L65">		assertArrayEquals(palavras2.toArray(), CamelCase.converterCamelCase(&quot;recupera10Primeiros&quot;).toArray());</span>
+<span class="fc" id="L66">	}</span>
+	
+	@Test(expected=NumeroInicioException.class)
+	public void numeroInicio(){
+<span class="nc" id="L70">		assertArrayEquals(palavras3.toArray(), CamelCase.converterCamelCase(&quot;10Primeiros&quot;).toArray());</span>
+<span class="nc" id="L71">	}</span>
+	
+	@Test(expected=CaractereEspecialException.class)
+	public void caractereEspecial(){
+<span class="nc" id="L75">		assertArrayEquals(palavras4.toArray(), CamelCase.converterCamelCase(&quot;nome#Composto&quot;).toArray());</span>
+<span class="nc" id="L76">	}</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span>TesteCamelCase (23 de jan. de 2022 19:35:54)</div></body></html>
